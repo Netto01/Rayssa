@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Rayssa - Psicóloga Clínica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f8fafc',
+                        accent: '#059669'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-primary">
+                    <i class="fas fa-brain mr-2"></i>Dra. Rayssa
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-primary transition duration-300">Início</a>
+                    <a href="#sobre" class="text-gray-700 hover:text-primary transition duration-300">Sobre</a>
+                    <a href="#servicos" class="text-gray-700 hover:text-primary transition duration-300">Serviços</a>
+                    <a href="#depoimentos" class="text-gray-700 hover:text-primary transition duration-300">Depoimentos</a>
+                    <a href="#contato" class="text-gray-700 hover:text-primary transition duration-300">Contato</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#inicio" class="block py-2 text-gray-700 hover:text-primary">Início</a>
+                <a href="#sobre" class="block py-2 text-gray-700 hover:text-primary">Sobre</a>
+                <a href="#servicos" class="block py-2 text-gray-700 hover:text-primary">Serviços</a>
+                <a href="#depoimentos" class="block py-2 text-gray-700 hover:text-primary">Depoimentos</a>
+                <a href="#contato" class="block py-2 text-gray-700 hover:text-primary">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="bg-gradient-to-br from-blue-50 to-indigo-100 pt-24 pb-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
+                     alt="Dra. Rayssa" 
+                     class="w-48 h-48 rounded-full mx-auto mb-8 shadow-lg object-cover">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Dra. Rayssa Silva
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                    Psicóloga Clínica | CRP 06/123456
+                </p>
+                <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+                    Oferecendo cuidado psicológico com abordagem humanizada, 
+                    ajudando você a encontrar equilíbrio emocional e bem-estar mental.
+                </p>
+                <div class="space-x-4">
+                    <a href="#contato" class="bg-primary text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition duration-300 inline-block">
+                        Agendar Consulta
+                    </a>
+                    <a href="#sobre" class="border border-primary text-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white transition duration-300 inline-block">
+                        Saiba Mais
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Sobre Mim</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Formação e Experiência</h3>
+                        <p class="text-gray-600 mb-6">
+                            Psicóloga formada pela Universidade de São Paulo (USP) com especialização em 
+                            Terapia Cognitivo-Comportamental. Possuo mais de 8 anos de experiência em 
+                            atendimento clínico, ajudando pessoas a superarem desafios emocionais e 
+                            psicológicos.
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            Minha abordagem é baseada na escuta ativa, empatia e técnicas cientificamente 
+                            comprovadas, sempre respeitando a individualidade de cada paciente.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-accent mr-3"></i>
+                                <span>Graduação em Psicologia - USP</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-accent mr-3"></i>
+                                <span>Especialização em TCC</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-accent mr-3"></i>
+                                <span>8+ anos de experiência clínica</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-accent mr-3"></i>
+                                <span>Atendimento presencial e online</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=600&q=80" 
+                             alt="Consultório" 
+                             class="rounded-lg shadow-lg w-full max-w-md mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Serviços</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-user text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900">Terapia Individual</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-6">
+                        Atendimento personalizado para ansiedade, depressão, autoestima, 
+                        relacionamentos e crescimento pessoal.
+                    </p>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-primary">R$ 120</span>
+                        <span class="text-gray-500">/sessão</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-heart text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900">Terapia de Casal</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-6">
+                        Ajudo casais a melhorarem a comunicação, resolverem conflitos 
+                        e fortalecerem o relacionamento.
+                    </p>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-primary">R$ 180</span>
+                        <span class="text-gray-500">/sessão</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-laptop text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-900">Terapia Online</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-6">
+                        Atendimento por videoconferência com a mesma qualidade 
+                        do presencial, no conforto da sua casa.
+                    </p>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-primary">R$ 100</span>
+                        <span class="text-gray-500">/sessão</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">
+                    Primeira consulta com 50% de desconto para novos pacientes
+                </p>
+                <a href="#contato" class="bg-accent text-white px-8 py-3 rounded-lg hover:bg-green-700 transition duration-300 inline-block">
+                    Agendar Primeira Consulta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">O que dizem meus pacientes</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "A Dra. Rayssa me ajudou a superar um período muito difícil da minha vida. 
+                        Sua abordagem carinhosa e profissional fez toda a diferença no meu processo de cura."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" 
+                             alt="Maria" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <p class="font-semibold">Maria S.</p>
+                            <p class="text-sm text-gray-500">Paciente há 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "Excelente profissional! Me sinto muito acolhido durante as sessões. 
+                        A terapia online também é muito eficiente e conveniente."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" 
+                             alt="João" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <p class="font-semibold">João P.</p>
+                            <p class="text-sm text-gray-500">Paciente há 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "A Dra. Rayssa nos ajudou muito como casal. Aprendemos a nos comunicar melhor 
+                        e nosso relacionamento está mais forte do que nunca."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" 
+                             alt="Ana" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <p class="font-semibold">Ana & Carlos</p>
+                            <p class="text-sm text-gray-500">Terapia de casal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 italic">
+                        "Profissional extremamente competente e empática. Me ajudou a desenvolver 
+                        ferramentas para lidar com a ansiedade no dia a dia."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" 
+                             alt="Carla" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <p class="font-semibold">Carla M.</p>
+                            <p class="text-sm text-gray-500">Paciente há 6 meses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Entre em Contato</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold text-primary mb-6">Informações de Contato</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-4 text-xl"></i>
+                            <div>
+                                <p class="font-semibold">Telefone</p>
+                                <p class="text-gray-600">(11) 99999-9999</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-4 text-xl"></i>
+                            <div>
+                                <p class="font-semibold">E-mail</p>
+                                <p class="text-gray-600">contato@drarayssa.com.br</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-primary mr-4 text-xl"></i>
+                            <div>
+                                <p class="font-semibold">Endereço</p>
+                                <p class="text-gray-600">Rua das Palmeiras, 123<br>Vila Madalena - São Paulo/SP</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-primary mr-4 text-xl"></i>
+                            <div>
+                                <p class="font-semibold">Horário de Atendimento</p>
+                                <p class="text-gray-600">Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Redes Sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form id="contact-form" class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold text-primary mb-6">Agende sua Consulta</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="nome" class="block text-gray-700 font-semibold mb-2">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-semibold mb-2">E-mail</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="telefone" class="block text-gray-700 font-semibold mb-2">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="servico" class="block text-gray-700 font-semibold mb-2">Tipo de Atendimento</label>
+                                <select id="servico" name="servico" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Selecione o tipo de atendimento</option>
+                                    <option value="individual">Terapia Individual</option>
+                                    <option value="casal">Terapia de Casal</option>
+                                    <option value="online">Terapia Online</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="mensagem" class="block text-gray-700 font-semibold mb-2">Mensagem</label>
+                                <textarea id="mensagem" name="mensagem" rows="4" 
+                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          placeholder="Conte um pouco sobre o que você gostaria de trabalhar na terapia..."></textarea>
+                            </div>
+                            <button type="submit" 
+                                    class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
+                                Enviar Mensagem
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <i class="fas fa-brain mr-2"></i>Dra. Rayssa
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Cuidado psicológico com abordagem humanizada, 
+                        ajudando você a encontrar equilíbrio emocional e bem-estar mental.
+                    </p>
+                    <p class="text-gray-400">
+                        CRP 06/123456
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white transition duration-300">Início</a></li>
+                        <li><a href="#sobre" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-white transition duration-300">Serviços</a></li>
+                        <li><a href="#depoimentos" class="text-gray-400 hover:text-white transition duration-300">Depoimentos</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contato</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>(11) 99999-9999</li>
+                        <li><i class="fas fa-envelope mr-2"></i>contato@drarayssa.com.br</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Vila Madalena - SP</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Dra. Rayssa Silva. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
