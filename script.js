@@ -151,26 +151,119 @@ document.getElementById('telefone').addEventListener('input', function(e) {
 
 // Scroll animations
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach(element => {
+    const elements = document.querySelectorAll('.animate-on-scroll:not(.animate-fade-in)');
+    const windowHeight = window.innerHeight;
+    
+    elements.forEach((element, index) => {
         const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
+        const elementVisible = 100;
         
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('animate-fade-in');
+        if (elementTop < windowHeight - elementVisible && elementTop > -element.offsetHeight) {
+            setTimeout(() => {
+                element.classList.add('animate-fade-in');
+            }, index * 150); // Staggered animation
         }
     });
 }
 
 // Add animation classes to elements
 document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('section > div');
-    animatedElements.forEach(element => {
-        element.classList.add('animate-on-scroll');
+    // Add animation to specific elements with custom classes
+    const animationSelectors = [
+        '.animate-title',
+        '.animate-content', 
+        '.animate-cards',
+        '.animate-section',
+        '.bg-white.p-8.rounded-lg',
+        '.bg-gray-50.p-8.rounded-lg'
+    ];
+    
+    // Add animation to hero section elements
+    const heroSelectors = [
+        '.animate-hero',
+        '.animate-profile',
+        '.animate-subtitle', 
+        '.animate-description',
+        '.animate-buttons'
+    ];
+    
+    // Apply animation classes only to elements not in hero section initially
+    animationSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            // Only add animation class if not in hero section
+            if (!element.closest('#inicio')) {
+                element.classList.add('animate-on-scroll');
+            }
+        });
     });
     
-    window.addEventListener('scroll', animateOnScroll);
+    // Apply animation classes to hero elements
+    heroSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            element.classList.add('animate-on-scroll');
+        });
+    });
+    
+    // Animate hero section immediately
+    setTimeout(() => {
+        animateHeroSection();
+    }, 100);
+    
+    // Animate other visible elements immediately 
+    setTimeout(() => {
+        animateAllVisibleElements();
+    }, 500);
+    
+    // Throttled scroll listener for better performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                animateOnScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
 });
+
+// Function to animate ALL visible elements on page load (not just hero)
+function animateAllVisibleElements() {
+    const elements = document.querySelectorAll('.animate-on-scroll:not(.animate-fade-in)');
+    
+    elements.forEach((element, index) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 1.2 && rect.bottom > -100;
+        
+        if (isVisible) {
+            setTimeout(() => {
+                element.classList.add('animate-fade-in');
+            }, index * 100); // Faster staggered animation
+        }
+    });
+}
+
+// Function to animate hero section on page load
+function animateHeroSection() {
+    const heroElements = [
+        '.animate-profile',
+        '.animate-hero .animate-title',
+        '.animate-subtitle',
+        '.animate-description', 
+        '.animate-buttons'
+    ];
+    
+    heroElements.forEach((selector, index) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            setTimeout(() => {
+                element.classList.add('animate-fade-in');
+            }, index * 200); // Faster sequential animation
+        }
+    });
+}
 
 // WhatsApp integration
 function openWhatsApp() {
@@ -211,21 +304,114 @@ document.addEventListener('DOMContentLoaded', function() {
 // Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
+    /* Default state - elements start invisible */
     .animate-on-scroll {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* Animated state - elements become visible */
+    .animate-fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* Hero section - elements visible immediately, just animate in */
+    #inicio .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
         transition: all 0.6s ease-out;
     }
     
-    .animate-fade-in {
-        opacity: 1;
-        transform: translateY(0);
+    /* Hero section specific animations */
+    .animate-profile.animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .animate-profile.animate-fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) scale(1) !important;
+    }
+    
+    .animate-hero .animate-title.animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .animate-subtitle.animate-on-scroll {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.6s ease-out;
+    }
+    
+    .animate-subtitle.animate-fade-in {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+    
+    .animate-description.animate-on-scroll {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.6s ease-out;
+    }
+    
+    .animate-description.animate-fade-in {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+    
+    .animate-buttons.animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .animate-buttons.animate-fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) scale(1) !important;
+    }
+    
+    /* Section titles */
+    .animate-title.animate-on-scroll {
+        transform: translateY(30px) scale(0.95);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .animate-title.animate-fade-in {
+        transform: translateY(0) scale(1) !important;
+    }
+    
+    .animate-cards .animate-on-scroll {
+        transform: translateY(50px);
+        transition: all 0.6s ease-out;
+    }
+    
+    .animate-content.animate-on-scroll {
+        transform: translateX(-30px);
+        transition: all 0.8s ease-out;
+    }
+    
+    .animate-content.animate-fade-in {
+        transform: translateX(0) !important;
+    }
+    
+    /* Card hover effects */
+    .bg-white.p-8.rounded-lg, .bg-gray-50.p-8.rounded-lg {
+        transition: all 0.3s ease, opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .bg-white.p-8.rounded-lg:hover, .bg-gray-50.p-8.rounded-lg:hover {
+        transform: translateY(-5px) !important;
     }
     
     @keyframes fadeInUp {
         from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
         }
         to {
             opacity: 1;
@@ -234,7 +420,7 @@ style.textContent = `
     }
     
     .fade-in-up {
-        animation: fadeInUp 0.6s ease-out;
+        animation: fadeInUp 0.8s ease-out forwards;
     }
 `;
 document.head.appendChild(style);
