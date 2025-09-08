@@ -267,7 +267,7 @@ function animateHeroSection() {
 
 // WhatsApp integration
 function openWhatsApp() {
-    const phone = '5511999999999'; // Replace with actual WhatsApp number
+    const phone = '556384911618'; // Correct WhatsApp number
     const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
     const url = `https://wa.me/${phone}?text=${message}`;
     window.open(url, '_blank');
@@ -275,6 +275,7 @@ function openWhatsApp() {
 
 // Navigation integration for location
 function openNavigation() {
+    console.log('Opening navigation...'); // Debug log
     const address = 'Palmas Business Center, Q. 106 Norte Alameda 2, 4 - Sala 206 - Plano Diretor Norte, Palmas - TO, 77006-054';
     const encodedAddress = encodeURIComponent(address);
     
@@ -311,32 +312,42 @@ function openNavigation() {
 
 // Add WhatsApp click handler
 document.addEventListener('DOMContentLoaded', function() {
-    const whatsappLinks = document.querySelectorAll('.fab.fa-whatsapp').forEach(link => {
+    // WhatsApp links
+    const whatsappLinks = document.querySelectorAll('.fab.fa-whatsapp');
+    whatsappLinks.forEach(link => {
         link.parentElement.addEventListener('click', function(e) {
             e.preventDefault();
             openWhatsApp();
         });
     });
     
-    // Add navigation click handlers for location elements
-    const locationElements = document.querySelectorAll('[data-location="true"], .fas.fa-map-marker-alt, .fas.fa-map');
+    // Navigation click handlers for location elements
+    const locationElements = document.querySelectorAll('[data-location="true"]');
     locationElements.forEach(element => {
         element.style.cursor = 'pointer';
         element.addEventListener('click', function(e) {
             e.preventDefault();
+            console.log('Location clicked!'); // Debug log
             openNavigation();
         });
     });
     
-    // Add click handler to location cards
-    const locationCards = document.querySelectorAll('div:has(.fas.fa-map-marker-alt), div:has(.fas.fa-map)');
-    locationCards.forEach(card => {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', function(e) {
-            e.preventDefault();
-            openNavigation();
-        });
+    // Also add listeners to map marker icons specifically
+    const mapIcons = document.querySelectorAll('.fas.fa-map-marker-alt');
+    mapIcons.forEach(icon => {
+        const parentCard = icon.closest('div');
+        if (parentCard && parentCard.hasAttribute('data-location')) {
+            parentCard.style.cursor = 'pointer';
+            parentCard.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Map icon clicked!'); // Debug log
+                openNavigation();
+            });
+        }
     });
+
+    // Service type selection (Online/Presencial) - Removed toggle functionality
+    // Both services are now always visible
 });
 
 // Floating WhatsApp button
