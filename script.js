@@ -273,12 +273,68 @@ function openWhatsApp() {
     window.open(url, '_blank');
 }
 
+// Navigation integration for location
+function openNavigation() {
+    const address = 'Palmas Business Center, Q. 106 Norte Alameda 2, 4 - Sala 206 - Plano Diretor Norte, Palmas - TO, 77006-054';
+    const encodedAddress = encodeURIComponent(address);
+    
+    // Detect if mobile device
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // For mobile devices, try to open native maps app
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS - Apple Maps
+            const appleMapsUrl = `http://maps.apple.com/?q=${encodedAddress}`;
+            window.open(appleMapsUrl, '_blank');
+        } else if (/Android/i.test(navigator.userAgent)) {
+            // Android - Google Maps app
+            const googleMapsUrl = `google.navigation:q=${encodedAddress}`;
+            const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
+            
+            // Try to open Google Maps app, fallback to web
+            window.location.href = googleMapsUrl;
+            setTimeout(() => {
+                window.open(fallbackUrl, '_blank');
+            }, 500);
+        } else {
+            // Other mobile devices - Google Maps web
+            const googleMapsWeb = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
+            window.open(googleMapsWeb, '_blank');
+        }
+    } else {
+        // For desktop, open Google Maps web with directions
+        const googleMapsWeb = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
+        window.open(googleMapsWeb, '_blank');
+    }
+}
+
 // Add WhatsApp click handler
 document.addEventListener('DOMContentLoaded', function() {
     const whatsappLinks = document.querySelectorAll('.fab.fa-whatsapp').forEach(link => {
         link.parentElement.addEventListener('click', function(e) {
             e.preventDefault();
             openWhatsApp();
+        });
+    });
+    
+    // Add navigation click handlers for location elements
+    const locationElements = document.querySelectorAll('[data-location="true"], .fas.fa-map-marker-alt, .fas.fa-map');
+    locationElements.forEach(element => {
+        element.style.cursor = 'pointer';
+        element.addEventListener('click', function(e) {
+            e.preventDefault();
+            openNavigation();
+        });
+    });
+    
+    // Add click handler to location cards
+    const locationCards = document.querySelectorAll('div:has(.fas.fa-map-marker-alt), div:has(.fas.fa-map)');
+    locationCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            openNavigation();
         });
     });
 });
